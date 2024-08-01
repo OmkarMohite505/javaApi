@@ -1,5 +1,8 @@
 package com.app.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,7 +47,7 @@ public class AuthenticationController {
 	private String adminSecretKey;
 
 	@PostMapping("/sign-in")
-	public ResponseEntity<?> validateuserAndCreateJwtToken(@RequestBody AuthRequest authReq) {
+	public ResponseEntity<?> validateuserAndCreateJwtToken(@RequestBody AuthRequest authReq) throws IOException {
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(authReq.getEmail(),
 				authReq.getPassword());
 		Authentication authenticationDetails = authManager.authenticate(authToken);
@@ -59,9 +62,11 @@ public class AuthenticationController {
 		authResponse.setJwtToken(utils.generateJwtToken(authenticationDetails));
 		authResponse.setMessage("Authentication Successfull !!");
 		mapper.map(user, authResponse);
-		authResponse.setId(user.getId().longValue());
+		byte profilePictureBlob[] = Files.readAllBytes(Paths.get(user.getProfilePicPath()));
 		
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(authResponse);
+		authResponse.setProfilePicture(profilePictureBlob);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(authResponse);
 
 	}
 }

@@ -14,7 +14,7 @@ public class AuthResponse {
 	private String email;
 	private String firstName;
 	private String lastName;
-	private MultipartFile profilePicture;
+	private byte[] profilePicture;
 	private Set<RoleEnum> userRoles = new HashSet<RoleEnum>();
 	
 	public String getMessage() {
@@ -33,7 +33,7 @@ public class AuthResponse {
 		return id;
 	}
 	public void setId(Long id) {
-		id = id;
+		this.id = id;
 	}
 	public String getEmail() {
 		return email;
@@ -53,16 +53,16 @@ public class AuthResponse {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public MultipartFile getProfilePicture() {
+	public byte[] getProfilePicture() {
 		return profilePicture;
 	}
-	public void setProfilePicture(MultipartFile profilePicture) {
+	public void setProfilePicture(byte[] profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 	public Set<RoleEnum> getUserRoles() {
 		return userRoles;
 	}
-	public void setUserRoles(HashSet<RoleEnum> userRoles) {
+	public void setUserRoles(Set<RoleEnum> userRoles) {
 		this.userRoles = userRoles;
 	}
 	
