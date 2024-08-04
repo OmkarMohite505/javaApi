@@ -5,19 +5,16 @@ import java.util.Set;
 
 import org.hibernate.annotations.ManyToAny;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
 public class User extends BaseEntity {
 	private String email;
 	private String password;

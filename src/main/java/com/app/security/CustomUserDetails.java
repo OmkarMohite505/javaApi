@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.entities.User;
 
-import lombok.AllArgsConstructor;
+
 
 
 public class CustomUserDetails implements UserDetails {

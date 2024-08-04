@@ -23,7 +23,7 @@ import com.app.repository.RoleRepository;
 import com.app.repository.UserRepository;
 import com.app.security.CustomUserDetails;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @Component
 @Transactional
